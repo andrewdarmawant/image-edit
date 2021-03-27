@@ -9,7 +9,7 @@ public class ImageEdit {
       
       int choice = intro(input);   
       
-      while(choice > 3 || choice < 1){
+      while(choice > 4 || choice < 1){
          System.out.println("Invalid input");
          System.out.print("Please ");
          choice = intro(input);
@@ -19,6 +19,9 @@ public class ImageEdit {
          pic.show();
       }else if(choice == 2){
          blur(pic);
+         pic.show();
+      }else if(choice == 3){
+         grayscale(pic);
          pic.show();
       }else{
          System.out.print("Amplify which color?(r/g/b): ");
@@ -32,10 +35,20 @@ public class ImageEdit {
    
    }
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
    public static int intro(Scanner input){
       System.out.println("Press 1 to invert image");
       System.out.println("Press 2 to blur image");
-      System.out.println("Press 3 to amplify a color on the image");
+      System.out.println("Press 3 to make the image into grayscale");
+      System.out.println("Press 4 to amplify a color on the image");
       return input.nextInt();
    }
 
