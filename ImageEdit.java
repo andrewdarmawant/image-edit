@@ -5,21 +5,40 @@ import java.awt.*;
 public class ImageEdit {
    public static void main(String[] args) {
       Scanner input = new Scanner(System.in);
-      
-      // show only 1 state at a time   
-   
       Picture pic = new Picture("image.jpg");
-      //pic.show();
       
-      changeAHue(pic, "r");
-      pic.show();
+      int choice = intro(input);   
+      
+      while(choice > 3 || choice < 1){
+         System.out.println("Invalid input");
+         System.out.print("Please ");
+         choice = intro(input);
+      }
+      if(choice == 1){
+         negative(pic);
+         pic.show();
+      }else if(choice == 2){
+         blur(pic);
+         pic.show();
+      }else{
+         System.out.print("Amplify which color?(r/g/b): ");
+         String color = input.next();
+         color = color.toLowerCase();
+      
+         changeAHue(pic, color);
+         pic.show();
+      }
+      
    
-      //negative(pic);
-      //pic.show();
-   
-      //blur(pic);
-      //pic.show();
    }
+   
+   public static int intro(Scanner input){
+      System.out.println("Press 1 to invert image");
+      System.out.println("Press 2 to blur image");
+      System.out.println("Press 3 to amplify a color on the image");
+      return input.nextInt();
+   }
+
    
    // amplifies a certain color of an image
    public static void changeAHue(Picture pic, String more){
